@@ -1,16 +1,17 @@
 "use client"; // This ensures the file is treated as a Client Component
 import { motion } from "framer-motion";
-import React, { useState } from "react"; // Import useState
 import { FaFacebook, FaTwitter,FaEnvelope,FaYoutube,FaMapMarkerAlt,FaPhone,FaInstagram } from 'react-icons/fa';
 import { Search } from "lucide-react";
-import Link from "next/link";
 import { ChevronDown } from "lucide-react"; // Importing dropdown arrow icon
 
+import { useState } from "react";
 
-export default function  Home() {
-  const [openDropdown, setOpenDropdown] = useState(null);
-  const toggleDropdown = (menu) => {
-    setOpenDropdown(openDropdown === menu ? null : menu);
+
+export default function Home() {
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  const toggleDropdown = (menu: string) => {
+    setOpenDropdown((prev) => (prev === menu ? null : menu));
   };
 
   return (
@@ -123,7 +124,7 @@ export default function  Home() {
 {/* Login Dropdown */}
 <li className="relative">
             <button
-              onClick={() => toggleDropdown("home")}
+              onClick={() => toggleDropdown("login")}
               className="flex items-center gap-1 px-4 py-2 text-gray-800 transition hover:text-blue-600 group focus:outline-none"
             >
               Login
@@ -136,7 +137,7 @@ export default function  Home() {
 {/* Register Dropdown */}
 <li className="relative">
             <button
-              onClick={() => toggleDropdown("home")}
+              onClick={() => toggleDropdown("register")}
               className="flex items-center gap-1 px-4 py-2 text-gray-800 transition hover:text-blue-600 group focus:outline-none"
             >
               Register
@@ -183,7 +184,7 @@ export default function  Home() {
       >
         Always Want Safe <br /> And Good Water
       </motion.h2>
-      <motion.p
+      <motion.h2
         className="text-lg md:text-2xl transition-opacity text-black duration-700 hover:opacity-80"
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
@@ -196,7 +197,7 @@ export default function  Home() {
 </button>
 
 </div>
-      </motion.p>
+      </motion.h2>
       
       
     </div>
@@ -383,9 +384,7 @@ export default function  Home() {
     We Deliver Best Quality
     Bottle Packs.
     </p>
-    <p className="text-lg text-orange-200 font-bold mb-6">
-    <br/>
-    </p>
+    
     {/* Cards */}
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       {/* Card 1 */}
@@ -420,11 +419,6 @@ export default function  Home() {
         20000ml of filtered water.
         </p>
       </div>
-
-      
-
-      {/* Card 5 */}
-      
     </div>
   </div>
 </section>
@@ -433,8 +427,7 @@ export default function  Home() {
  <section className="py-5 bg-white">
  <div className="container mx-auto text-center">
     <p className="text-2xl md:text-3xl font-bold text-black mb-2">
-    Gallery<br/>
-    <br/>
+    Gallery
     </p>
     </div>
   <div className="container mx-auto text-center max-w-7xl px-4 md:px-6 lg:px-8">
