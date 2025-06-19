@@ -1,9 +1,7 @@
 "use client"; // This ensures the file is treated as a Client Component
 import { motion } from "framer-motion";
 import { FaFacebook, FaTwitter,FaEnvelope,FaYoutube,FaMapMarkerAlt,FaPhone,FaInstagram } from 'react-icons/fa';
-import { Search } from "lucide-react";
-import { ChevronDown } from "lucide-react"; // Importing dropdown arrow icon
-
+import Navbar from '@/app/components/Navbar';
 import { useState } from "react";
 
 
@@ -16,154 +14,10 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-white text-white">
-       <header className="fixed top-0 left-0 w-full bg-white text-black  z-50">
-      
-
-      {/* Navbar Content */}
-      <div className="relative container mx-auto flex items-center justify-between px-8 py-4">
-        {/* Logo */}
-        <h1 className="text-3xl font-bold">Drinking Water</h1>
-
-        {/* Centered Navigation Bar */}
-        <div className="flex-grow flex justify-center">
-          <nav className="flex space-x-8 text-lg font-semibold">
-            {/* Navigation Links */}
-    <ul className="flex space-x-4">
+      {/* Navbar*/}
+     
+      <Navbar />    
     
-
-
-          
- {/* Home Dropdown */}
- <li className="relative">
-            <button
-              onClick={() => toggleDropdown("home")}
-              className="flex items-center gap-1 px-4 py-2 text-gray-800 transition hover:text-blue-600 group focus:outline-none"
-            >
-              Home
-              <span className="absolute left-0 bottom-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-              <ChevronDown
-                className={`w-4 h-4 transition-transform duration-300 ${
-                  openDropdown === "home" ? "rotate-180" : "rotate-0"
-                }`}
-              />
-            </button>
-
-            {openDropdown === "home" && (
-              <ul className="absolute left-0 mt-2 w-40 bg-gray-800 text-white rounded-md shadow-lg">
-                {["Gallery", "Explore"].map((item) => (
-                  <li
-                    key={item}
-                    className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
-                    onClick={() => setOpenDropdown(null)}
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </li>
-
-          {/* Page Dropdown */}
-          <li className="relative">
-            <button
-              onClick={() => toggleDropdown("page")}
-              className="flex items-center gap-1 px-4 py-2 text-gray-800 transition hover:text-blue-600 group focus:outline-none"
-            >
-              Page
-              <span className="absolute left-0 bottom-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-              <ChevronDown
-                className={`w-4 h-4 transition-transform duration-300 ${
-                  openDropdown === "page" ? "rotate-180" : "rotate-0"
-                }`}
-              />
-            </button>
-
-            {openDropdown === "page" && (
-              <ul className="absolute left-0 mt-2 w-40 bg-gray-800 text-white rounded-md shadow-lg">
-                {["About", "Services", "Gallery"].map((item) => (
-                  <li
-                    key={item}
-                    className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
-                    onClick={() => setOpenDropdown(null)}
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </li>
-      {/* contact Dropdown */}
-    <li className="relative">
-            <button
-              onClick={() => toggleDropdown("contact")}
-              className="flex items-center gap-1 px-4 py-2 text-gray-800 transition hover:text-blue-600 group focus:outline-none"
-            >
-              Contact
-              <span className="absolute left-0 bottom-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-              <ChevronDown
-                className={`w-4 h-4 transition-transform duration-300 ${
-                  openDropdown === "contact" ? "rotate-180" : "rotate-0"
-                }`}
-              />
-            </button>
-
-            {openDropdown === "contact" && (
-              <ul className="absolute left-0 mt-2 w-40 bg-gray-800 text-white rounded-md shadow-lg">
-                {["Email", "Phone", "Location"].map((item) => (
-                  <li
-                    key={item}
-                    className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
-                    onClick={() => setOpenDropdown(null)}
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </li>
-{/* Login Dropdown */}
-<li className="relative">
-            <button
-              onClick={() => toggleDropdown("login")}
-              className="flex items-center gap-1 px-4 py-2 text-gray-800 transition hover:text-blue-600 group focus:outline-none"
-            >
-              Login
-              <span className="absolute left-0 bottom-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-              
-            </button>
-
-            
-          </li>
-{/* Register Dropdown */}
-<li className="relative">
-            <button
-              onClick={() => toggleDropdown("register")}
-              className="flex items-center gap-1 px-4 py-2 text-gray-800 transition hover:text-blue-600 group focus:outline-none"
-            >
-              Register
-              <span className="absolute left-0 bottom-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-             
-            </button>
-
-            
-          </li>
-    </ul>
-    {/* Search Icon */}
-    <button className="p-2 bg-gray-100 rounded-full hover:bg-blue-200 transition">
-          <Search className="w-5 h-5 text-blue-600" />
-        </button>
-    </nav>
-        </div>
-          {/* Social Media Icons */}
-          <div className="flex space-x-4 text-xl">
-          <FaFacebook className="hover:text-blue-500 cursor-pointer" />
-          <FaTwitter className="hover:text-sky-400 cursor-pointer" />
-          <FaYoutube className="hover:text-red-600 cursor-pointer" />
-          <FaInstagram className="hover:text-pink-500 cursor-pointer" />
-        </div>
-      </div>
-    </header>
-
       <main className="relative overflow-hidden">
   {/* Background Image */}
   <div className="relative mx-auto w-full h-screen">
@@ -518,15 +372,7 @@ export default function Home() {
         </div>
 
         {/* Support */}
-        <div>
-          <h3 className="text-xl font-bold">Support</h3>
-          <ul className="mt-4 space-y-2">
-            <li>Login</li>
-            <li>My Account</li>
-            <li>Subscribe</li>
-            <li>Contact</li>
-          </ul>
-        </div>
+        
 
         {/* Tips & Guides */}
         <div>
